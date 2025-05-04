@@ -1,4 +1,6 @@
 const API_BASE = "";
+const IS_LIVE = location.hostname.includes("onrender.com");
+
 document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("product-list")) displayProducts();
 
@@ -8,6 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (editId) prefillForm(editId);
     form.addEventListener("submit", async e => {
       e.preventDefault();
+      if (IS_LIVE) {
+        alert("Adding products is disabled on the live site.");
+        return;
+      }
       const fd = new FormData();
       fd.append("name", document.getElementById("name").value);
       fd.append("description", document.getElementById("description").value);
@@ -68,15 +74,21 @@ async function displayProducts(sort = "newest", filterCategory = "all") {
 
   container.innerHTML = "";
   for (const p of products) {
-    container.innerHTML += `
-      <div class="product-card">
-        <img src="${API_BASE}/${p.image}" alt="${p.name}">
-        <h3>${p.name}</h3>
-        <p>${p.description}</p>
-        <p><strong>Category:</strong> ${p.category || "Uncategorized"}</p>
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="${API_BASE}/${p.image}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <p>${p.description}</p>
+      <p><strong>Category:</strong> ${p.category || "Uncategorized"}</p>
+    `;
+    if (!IS_LIVE) {
+      card.innerHTML += `
         <button onclick="editProduct(${p.id})">Edit</button>
         <button onclick="deleteProduct('${p.image}')">Delete</button>
-      </div>`;
+      `;
+    }
+    container.appendChild(card);
   }
 }
 
