@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Products</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <h2>Products</h2>
+  <label>Sort by:
+    <select id="sort">
+      <option value="newest">Newest</option>
+      <option value="oldest">Oldest</option>
+      <option value="az">A-Z</option>
+      <option value="za">Z-A</option>
+    </select>
+  </label>
+  <label>Filter:
+    <select id="categoryFilter"></select>
+  </label>
+  <div id="product-list" class="product-grid"></div>
+  <script src="script.js"></script>
+  <script src="navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1746367530030,
+    "name": "CRANKSHAFT",
+    "description": "B-SERIES",
+    "category": "ENGINE",
+    "image": "uploads/1746367530023.jpeg"
+  },
+  {
+    "id": 1746367637384,
+    "name": "SEAL OIL HUB FRONT",
+    "description": "INTERNATIONAL",
+    "category": "HUB",
+    "image": "uploads/1746367637382.jpeg"
+  },
+  {
+    "id": 1746372834888,
+    "name": "FLYWHEEL HOUSING",
+    "description": "N14",
+    "category": "ENGINE",
+    "image": "uploads/1746372834883.jpg"
+  },
+  {
+    "id": 1746376978426,
+    "name": "FLYWHEEL HOUSING",
+    "description": "B-SERIES",
+    "category": "ENGINE",
+    "image": "uploads/1746376978424.jpeg"
+  }
+]
