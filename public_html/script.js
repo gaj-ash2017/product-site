@@ -1,39 +1,70 @@
-const API_BASE = "http://localhost:3000";
+const API_BASE = "";
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("product-list")) displayProducts();
 
-function populateCategoryFilter(products) {
+  const form = document.getElementById("productForm");
+  if (form) {
+    const editId = new URLSearchParams(location.search).get("editId");
+    if (editId) prefillForm(editId);
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const fd = new FormData();
+      fd.append("name", document.getElementById("name").value);
+      fd.append("description", document.getElementById("description").value);
+      fd.append("category", document.getElementById("category").value);
+      fd.append("image", document.getElementById("image").files[0]);
+      if (editId) {
+        const payload = {
+          name: fd.get("name"),
+          description: fd.get("description"),
+          category: fd.get("category"),
+        };
+        await fetch(`${API_BASE}/products/${editId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+      } else {
+        await fetch(`${API_BASE}/upload`, { method: "POST", body: fd });
+      }
+      alert("Saved!");
+      form.reset();
+      window.location.href = "products.html";
+    });
+  }
+
+  const sort = document.getElementById("sort");
   const filter = document.getElementById("categoryFilter");
-  if (!filter) return;
-
-  const uniqueCategories = [...new Set(products.map(p => p.category || "Uncategorized"))];
-  filter.innerHTML = `<option value="all">All</option>`;
-  uniqueCategories.forEach(cat => {
-    filter.innerHTML += `<option value="${cat}">${cat}</option>`;
-  });
-}
+  if (sort && filter) {
+    sort.addEventListener("change", () => displayProducts(sort.value, filter.value));
+    filter.addEventListener("change", () => displayProducts(sort.value, filter.value));
+  }
+});
 
 async function displayProducts(sort = "newest", filterCategory = "all") {
-  const container = document.getElementById("product-list");
-  if (!container) return;
   const res = await fetch(`${API_BASE}/products.json`);
   let products = await res.json();
 
-  populateCategoryFilter(products);
+  const container = document.getElementById("product-list");
+  if (!container) return;
+
+  const filter = document.getElementById("categoryFilter");
+  if (filter) {
+    const uniqueCategories = [...new Set(products.map(p => p.category || "Uncategorized"))];
+    filter.innerHTML = '<option value="all">All</option>';
+    uniqueCategories.forEach(cat => {
+      filter.innerHTML += `<option value="${cat}">${cat}</option>`;
+    });
+  }
 
   if (filterCategory !== "all") {
-    products = products.filter(
-      (p) => (p.category || "Uncategorized") === filterCategory
-    );
+    products = products.filter(p => (p.category || "Uncategorized") === filterCategory);
   }
 
-  if (sort === "newest") {
-    products.sort((a, b) => b.id - a.id);
-  } else if (sort === "oldest") {
-    products.sort((a, b) => a.id - b.id);
-  } else if (sort === "az") {
-    products.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sort === "za") {
-    products.sort((a, b) => b.name.localeCompare(a.name));
-  }
+  if (sort === "newest") products.sort((a, b) => b.id - a.id);
+  else if (sort === "oldest") products.sort((a, b) => a.id - b.id);
+  else if (sort === "az") products.sort((a, b) => a.name.localeCompare(b.name));
+  else if (sort === "za") products.sort((a, b) => b.name.localeCompare(a.name));
 
   container.innerHTML = "";
   for (const p of products) {
@@ -55,62 +86,10 @@ function editProduct(id) {
 
 async function deleteProduct(imagePath) {
   if (!confirm("Delete this product permanently?")) return;
-  try {
-    const filename = imagePath.split("/").pop();
-    await fetch(`${API_BASE}/upload/${filename}`, { method: "DELETE" });
-    displayProducts();
-  } catch (err) {
-    console.error("Delete failed:", err);
-  }
+  const filename = imagePath.split("/").pop();
+  await fetch(`${API_BASE}/upload/${filename}`, { method: "DELETE" });
+  displayProducts();
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("product-list");
-  const sortSelect = document.getElementById("sort");
-  const filter = document.getElementById("categoryFilter");
-
-  if (container) displayProducts();
-
-  if (sortSelect && filter) {
-    sortSelect.addEventListener("change", () => {
-      displayProducts(sortSelect.value, filter.value);
-    });
-    filter.addEventListener("change", () => {
-      displayProducts(sortSelect.value, filter.value);
-    });
-  }
-
-  const form = document.getElementById("productForm");
-  if (form) {
-    const editId = new URLSearchParams(location.search).get("editId");
-    if (editId) prefillForm(editId);
-    form.addEventListener("submit", async e => {
-      e.preventDefault();
-      const fd = new FormData();
-      fd.append("name", document.getElementById("name").value);
-      fd.append("description", document.getElementById("description").value);
-      fd.append("category", document.getElementById("category").value);
-      fd.append("image", document.getElementById("image").files[0]);
-      if (editId) {
-        const payload = {
-          name: document.getElementById("name").value,
-          description: document.getElementById("description").value,
-          category: document.getElementById("category").value,
-        };
-        await fetch(`${API_BASE}/products/${editId}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-      } else {
-        await fetch(`${API_BASE}/upload`, { method: "POST", body: fd });
-      }
-      alert("Product saved!");
-      form.reset();
-      window.location.href = "products.html";
-    });
-  }
-});
 
 async function prefillForm(id) {
   const res = await fetch(`${API_BASE}/products.json`);
