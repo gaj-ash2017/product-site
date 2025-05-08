@@ -9,7 +9,7 @@ body {
 }
 
 .spacer {
-  height: 75px;
+  height: 20px;
 }
 
 .hero {
@@ -175,6 +175,15 @@ footer {
 }
 
 /* Product Page */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
 .controls {
   display: flex;
   gap: 1rem;
@@ -186,31 +195,18 @@ footer {
 }
 
 .controls select,
-.controls input {
+.controls input[type="text"] {
   padding: 0.5rem;
   font-size: 1rem;
   border-radius: 4px;
   border: 1px solid #ccc;
-}
-
-.controls input[type="text"],
-.controls select {
   width: 250px;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
 }
 
 .product {
   background: white;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -219,8 +215,8 @@ footer {
 }
 
 .product img {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 200px;
   object-fit: cover;
   border-bottom: 1px solid #eee;
   margin-bottom: 1rem;
@@ -237,57 +233,152 @@ footer {
 }
 
 .product p {
+  display: flex;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+  border-bottom: 1px solid #eee;
   font-size: 0.95rem;
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #eee;
-  padding-left: 0.5rem;
-  text-align: left;
   width: 100%;
+  text-align: left;
 }
 
-/* Import Page */
-.import-page {
+.product p .label {
+  min-width: 90px;
+  font-weight: bold;
+  color: #444;
+}
+
+.product p .value {
+  flex: 1;
+  color: #333;
+}
+
+/* Admin Page */
+.admin-page {
   font-family: Arial, sans-serif;
-  padding: 2rem;
-  max-width: 600px;
-  margin: auto;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  font-size: 14px;
 }
 
-.import-page h2 {
-  margin-bottom: 1rem;
-}
-
-.import-page form {
+.admin-page .controls {
   display: flex;
-  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.admin-page select,
+.admin-page input[type="text"] {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  min-width: 250px;
+}
+
+.admin-page #product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
 
-.import-page input[type="file"] {
-  padding: 0.5rem;
+.admin-page .product {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
-.import-page button {
-  padding: 0.7rem;
-  background-color: #007bff;
+.admin-page .product img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 0.75rem;
+  border-radius: 4px;
+}
+
+.admin-page .product h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+
+.admin-page .product p {
+  margin: 0.4rem 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.4rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.buttons button {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
   border: none;
-  color: white;
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 5px;
 }
 
-.import-page button:hover {
-  background-color: #0056b3;
+.buttons button:first-child {
+  background-color: #007bff;
+  color: #fff;
 }
 
-.import-page .note {
-  font-size: 0.9rem;
-  color: #666;
+.buttons button:last-child {
+  background-color: #dc3545;
+  color: #fff;
 }
 
-@media (max-width: 768px) {
-  .hero h2 {
-    font-size: 2rem;
-  }
+#editForm {
+  margin-top: 2rem;
+  width: 50%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: none;
+}
+
+#editForm label {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+#editForm input {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#editForm button[type="submit"] {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#cancelEdit {
+  margin-left: 0.5rem;
+  background-color: #6c757d;
+  color: white;
+}
+
+mark {
+  background-color: yellow;
 }
