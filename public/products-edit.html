@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin: Edit & Delete Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="admin-page">
+  <h1>🛠️ Admin: Edit & Delete Products</h1>
+  <div class="controls">
+    <select id="categoryFilter">
+      <option value="">All Categories</option>
+    </select>
+    <select id="sortBy">
+      <option value="name-asc">Name A–Z</option>
+      <option value="name-desc">Name Z–A</option>
+      <option value="qty-asc">Quantity Low–High</option>
+      <option value="qty-desc">Quantity High–Low</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="Search name or description...">
+  </div>
+  <div id="product-list"></div>
+
+  <form id="editForm" onsubmit="submitEdit(event)">
+    <h2>Edit Product</h2>
+    <input type="hidden" id="editStockCode" />
+    <label>Name: <input type="text" id="editName" required></label>
+    <label>Description: <input type="text" id="editDescription"></label>
+    <label>Category: <input type="text" id="editCategory"></label>
+    <label>Extra Notes: <input type="text" id="editExtraNotes"></label>
+    <label>Quantity: <input type="number" id="editQuantity"></label>
+    <label>Image Filename: <input type="text" id="editImage"></label>
+    <button type="submit">💾 Save</button>
+    <button type="button" id="cancelEdit">❌ Cancel</button>
+  </form>
+
+  <script>
+    let allProducts = [];
+
+    fetch('/products.json')
+      .then(res => res.json())
+      .then(products => {
+        allProducts = products;
+        populateCategoryFilter(products);
+        filterAndSort();
+      });
+
+    function populateCategoryFilter(products) {
+      const categories = [...new Set(products.map(p => p.category).filter(Boolean))];
+      const filter = document.getElementById('categoryFilter');
+      categories.forEach(cat => {
+        const opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = cat;
+        filter.appendChild(opt);
+      });
+    }
+
+    function highlight(text, keyword) {
+      const regex = new RegExp(`(${keyword})`, 'gi');
+      return text.replace(regex, '<mark>$1</mark>');
+    }
+
+    function renderProducts(products) {
+      const list = document.getElementById('product-list');
+      list.innerHTML = '';
+      const keyword = document.getElementById('searchInput').value.toLowerCase();
+
+      products.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'product';
+        const img = (p.image && p.image.trim() !== '') ? p.image : 'default.jpg';
+        const name = keyword ? highlight(p.name, keyword) : p.name;
+        const description = keyword ? highlight(p.description, keyword) : p.description;
+
+        div.innerHTML = `
+          <img src="/uploads/${img}" alt="${p.name}" onerror="this.src='/uploads/default.jpg';">
+          <h3>${name}</h3>
+          <p><span class="label">Description:</span><span class="value">${description}</span></p>
+          <p><span class="label">Category:</span><span class="value">${p.category}</span></p>
+          <p><span class="label">Notes:</span><span class="value">${p.extraNotes}</span></p>
+          <p><span class="label">Quantity:</span><span class="value">${p.quantity}</span></p>
+          <div class="buttons">
+            <button onclick="editProduct('${p.stockCode}')">✏️ Edit</button>
+            <button onclick="deleteProduct('${p.stockCode}')">🗑️ Delete</button>
+          </div>`;
+
+        list.appendChild(div);
+      });
+    }
+
+    function filterAndSort() {
+      let filtered = [...allProducts];
+      const cat = document.getElementById('categoryFilter').value;
+      const sort = document.getElementById('sortBy').value;
+      const keyword = document.getElementById('searchInput').value.toLowerCase();
+
+      if (cat) filtered = filtered.filter(p => p.category === cat);
+      if (keyword) filtered = filtered.filter(p =>
+        p.name.toLowerCase().includes(keyword) ||
+        p.description.toLowerCase().includes(keyword)
+      );
+
+      if (sort === 'name-asc') filtered.sort((a, b) => a.name.localeCompare(b.name));
+      if (sort === 'name-desc') filtered.sort((a, b) => b.name.localeCompare(a.name));
+      if (sort === 'qty-asc') filtered.sort((a, b) => a.quantity - b.quantity);
+      if (sort === 'qty-desc') filtered.sort((a, b) => b.quantity - a.quantity);
+
+      renderProducts(filtered);
+    }
+
+    document.getElementById('categoryFilter').addEventListener('change', filterAndSort);
+    document.getElementById('sortBy').addEventListener('change', filterAndSort);
+    document.getElementById('searchInput').addEventListener('input', filterAndSort);
+
+    function editProduct(code) {
+      const p = allProducts.find(p => p.stockCode === code);
+      if (!p) return;
+      document.getElementById('editStockCode').value = p.stockCode;
+      document.getElementById('editName').value = p.name;
+      document.getElementById('editDescription').value = p.description;
+      document.getElementById('editCategory').value = p.category;
+      document.getElementById('editExtraNotes').value = p.extraNotes;
+      document.getElementById('editQuantity').value = p.quantity;
+      document.getElementById('editImage').value = p.image;
+      document.getElementById('editForm').style.display = 'block';
+    }
+
+    function submitEdit(event) {
+      event.preventDefault();
+      const updated = {
+        stockCode: document.getElementById('editStockCode').value,
+        name: document.getElementById('editName').value,
+        description: document.getElementById('editDescription').value,
+        category: document.getElementById('editCategory').value,
+        extraNotes: document.getElementById('editExtraNotes').value,
+        quantity: parseInt(document.getElementById('editQuantity').value),
+        image: document.getElementById('editImage').value || 'default.jpg'
+      };
+      fetch('/edit-product', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updated)
+      })
+      .then(res => res.text())
+      .then(msg => {
+        alert(msg);
+        location.reload();
+      });
+    }
+
+    document.getElementById('cancelEdit').addEventListener('click', () => {
+      document.getElementById('editForm').reset();
+      document.getElementById('editForm').style.display = 'none';
+    });
+
+    function deleteProduct(stockCode) {
+      if (!confirm('Delete this product?')) return;
+      fetch('/delete-product', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ stockCode })
+      })
+      .then(res => res.text())
+      .then(msg => {
+        alert(msg);
+        location.reload();
+      });
+    }
+  </script>
+</body>
+</html>
