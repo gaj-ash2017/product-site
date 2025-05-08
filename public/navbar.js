@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const header = `
     <header>
       <div class="logo-area">
-        <img src="logo.png" alt="Logo" />
-        <span>Your Business</span>
+        <img src="./images/9800i.jpeg" alt="Logo" />
+        <span>Ashwin Gajan T/A Just Parts</span>
       </div>
     </header>
   `;
