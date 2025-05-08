@@ -1,3 +1,4 @@
+
 const API_BASE = "";
 const IS_LIVE = location.hostname.includes("onrender.com");
 
@@ -11,19 +12,23 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async e => {
       e.preventDefault();
       if (IS_LIVE) {
-        alert("Adding products is disabled on the live site.");
+        alert("Product adding is disabled on the live site.");
         return;
       }
       const fd = new FormData();
       fd.append("name", document.getElementById("name").value);
       fd.append("description", document.getElementById("description").value);
       fd.append("category", document.getElementById("category").value);
+      fd.append("extraNotes", document.getElementById("extraNotes").value);
+      fd.append("quantity", document.getElementById("quantity").value);
       fd.append("image", document.getElementById("image").files[0]);
       if (editId) {
         const payload = {
           name: fd.get("name"),
           description: fd.get("description"),
           category: fd.get("category"),
+          extraNotes: fd.get("extraNotes"),
+          quantity: fd.get("quantity"),
         };
         await fetch(`${API_BASE}/products/${editId}`, {
           method: "PUT",
@@ -41,13 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const sort = document.getElementById("sort");
   const filter = document.getElementById("categoryFilter");
+  const search = document.getElementById("searchBox");
   if (sort && filter) {
-    sort.addEventListener("change", () => displayProducts(sort.value, filter.value));
-    filter.addEventListener("change", () => displayProducts(sort.value, filter.value));
+    sort.addEventListener("change", () => displayProducts(sort.value, filter.value, search?.value || ""));
+    filter.addEventListener("change", () => displayProducts(sort.value, filter.value, search?.value || ""));
+  }
+  if (search) {
+    search.addEventListener("input", () => displayProducts(sort?.value || "newest", filter?.value || "all", search.value.trim()));
   }
 });
 
-async function displayProducts(sort = "newest", filterCategory = "all") {
+async function displayProducts(sort = "newest", filterCategory = "all", searchTerm = "") {
   const res = await fetch(`${API_BASE}/products.json`);
   let products = await res.json();
 
@@ -67,6 +76,16 @@ async function displayProducts(sort = "newest", filterCategory = "all") {
     products = products.filter(p => (p.category || "Uncategorized") === filterCategory);
   }
 
+  if (searchTerm) {
+    const term = searchTerm.toLowerCase();
+    products = products.filter(p =>
+      (p.name || "").toLowerCase().includes(term) ||
+      (p.description || "").toLowerCase().includes(term) ||
+      (p.category || "").toLowerCase().includes(term) ||
+      (p.extraNotes || "").toLowerCase().includes(term)
+    );
+  }
+
   if (sort === "newest") products.sort((a, b) => b.id - a.id);
   else if (sort === "oldest") products.sort((a, b) => a.id - b.id);
   else if (sort === "az") products.sort((a, b) => a.name.localeCompare(b.name));
@@ -81,6 +100,8 @@ async function displayProducts(sort = "newest", filterCategory = "all") {
       <h3>${p.name}</h3>
       <p>${p.description}</p>
       <p><strong>Category:</strong> ${p.category || "Uncategorized"}</p>
+      <p><strong>Qty:</strong> ${p.quantity || "N/A"}</p>
+      <p><strong>Notes:</strong> ${p.extraNotes || "None"}</p>
     `;
     if (!IS_LIVE) {
       card.innerHTML += `
@@ -111,4 +132,6 @@ async function prefillForm(id) {
   document.getElementById("name").value = found.name;
   document.getElementById("description").value = found.description;
   document.getElementById("category").value = found.category || "";
+  document.getElementById("extraNotes").value = found.extraNotes || "";
+  document.getElementById("quantity").value = found.quantity || "";
 }

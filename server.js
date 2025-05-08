@@ -1,80 +1,154 @@
-
 const express = require("express");
-const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
+const csv = require("csv-parser");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public_html")));
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
-  filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
-});
-const upload = multer({ storage });
+const productsFile = path.join(__dirname, "products.json");
 
-const dataFile = path.join(__dirname, "products.json");
-
-function readProducts() {
-  if (!fs.existsSync(dataFile)) return [];
-  return JSON.parse(fs.readFileSync(dataFile));
-}
-
+// Serve products.json to frontend
 app.get("/products.json", (req, res) => {
-  res.json(readProducts());
+  res.sendFile(productsFile);
 });
 
-app.post("/upload", upload.single("image"), (req, res) => {
-  const { name, description, category } = req.body;
-  const image = req.file ? `uploads/${req.file.filename}` : "";
+// Import CSV route
+const upload = multer({ dest: "uploads/" });
 
-  const newProduct = {
-    id: Date.now(),
-    name,
-    description,
-    category,
-    image,
-  };
+app.post("/import-csv", upload.single("csvfile"), (req, res) => {
+  if (!req.file) return res.status(400).send("No CSV file uploaded.");
 
-  const products = readProducts();
-  products.push(newProduct);
-  fs.writeFileSync(dataFile, JSON.stringify(products, null, 2));
+  const results = [];
 
-  res.json({ success: true });
+  fs.createReadStream(req.file.path)
+    .pipe(csv())
+    .on("data", (row) => {
+      const product = {
+        stockCode: row.stockCode?.trim() || "",
+        name: row.name?.trim() || "",
+        description: row.description?.trim() || "",
+        category: row.category?.trim() || "",
+        extraNotes: row.extraNotes?.trim() || "",
+        quantity: parseInt(row.quantity) || 0,
+        image: row.imageName?.trim() || "default.jpg",
+      };
+      results.push(product);
+    })
+    .on("end", () => {
+      fs.readFile(productsFile, "utf-8", (err, data) => {
+        let existingProducts = [];
+
+        if (!err && data) {
+          try {
+            existingProducts = JSON.parse(data);
+          } catch (e) {
+            return res.status(500).send("Error parsing existing products.");
+          }
+        }
+
+        results.forEach((newProd) => {
+          const index = existingProducts.findIndex(
+            (p) => p.stockCode.toLowerCase() === newProd.stockCode.toLowerCase()
+          );
+          if (index >= 0) {
+            existingProducts[index] = newProd;
+          } else {
+            existingProducts.push(newProd);
+          }
+        });
+
+        fs.writeFile(
+          productsFile,
+          JSON.stringify(existingProducts, null, 2),
+          (err) => {
+            if (err) return res.status(500).send("Error saving products.");
+            fs.unlink(req.file.path, () => {});
+            res.send("✅ Products imported successfully!");
+          }
+        );
+      });
+    })
+    .on("error", () => res.status(500).send("Error processing CSV."));
 });
 
-app.put("/products/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  const updatedData = req.body;
-  const products = readProducts();
-  const index = products.findIndex(p => p.id === id);
-  if (index === -1) return res.status(404).json({ error: "Product not found" });
+// Edit product route
+app.post("/edit-product", (req, res) => {
+  const updated = req.body;
 
-  products[index] = { ...products[index], ...updatedData };
-  fs.writeFileSync(dataFile, JSON.stringify(products, null, 2));
-  res.json({ success: true });
+  fs.readFile(productsFile, "utf-8", (err, data) => {
+    if (err) return res.status(500).send("Could not read products.");
+
+    let products = JSON.parse(data);
+    const index = products.findIndex((p) => p.stockCode === updated.stockCode);
+    if (index === -1) return res.status(404).send("Product not found.");
+
+    products[index] = updated;
+
+    fs.writeFile(productsFile, JSON.stringify(products, null, 2), (err) => {
+      if (err) return res.status(500).send("Failed to save product.");
+      res.send("✅ Product updated successfully!");
+    });
+  });
 });
 
-app.delete("/upload/:filename", (req, res) => {
-  const filePath = path.join(__dirname, "uploads", req.params.filename);
-  const dataPath = path.join(__dirname, "products.json");
+// Delete product route
+app.post("/delete-product", (req, res) => {
+  const stockCodeToDelete = req.body.stockCode;
 
-  if (!fs.existsSync(dataPath))
-    return res.status(404).json({ error: "No products found" });
+  fs.readFile(productsFile, "utf-8", (err, data) => {
+    if (err) return res.status(500).send("Error reading products.");
 
-  let products = JSON.parse(fs.readFileSync(dataPath));
-  products = products.filter(p => p.image !== `uploads/${req.params.filename}`);
-  fs.writeFileSync(dataPath, JSON.stringify(products, null, 2));
+    let products = JSON.parse(data);
+    const product = products.find((p) => p.stockCode === stockCodeToDelete);
+    if (!product) return res.status(404).send("Product not found.");
 
-  if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-  res.json({ success: true });
+    const imageToDelete = product.image;
+    products = products.filter((p) => p.stockCode !== stockCodeToDelete);
+
+    fs.writeFile(productsFile, JSON.stringify(products, null, 2), (err) => {
+      if (err) return res.status(500).send("Error saving products.");
+
+      const imgPath = path.join(__dirname, "public/uploads", imageToDelete);
+      if (imageToDelete !== "default.jpg" && fs.existsSync(imgPath)) {
+        fs.unlink(imgPath, () => {});
+      }
+
+      res.send("✅ Product deleted.");
+    });
+  });
 });
 
-app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+app.post("/delete-product", (req, res) => {
+  const stockCodeToDelete = req.body.stockCode;
+
+  fs.readFile(productsFile, "utf-8", (err, data) => {
+    if (err) return res.status(500).send("Error reading products.");
+
+    let products = JSON.parse(data);
+    const product = products.find((p) => p.stockCode === stockCodeToDelete);
+    if (!product) return res.status(404).send("Product not found.");
+
+    const imageToDelete = product.image;
+    products = products.filter((p) => p.stockCode !== stockCodeToDelete);
+
+    fs.writeFile(productsFile, JSON.stringify(products, null, 2), (err) => {
+      if (err) return res.status(500).send("Error saving products.");
+
+      const imgPath = path.join(__dirname, "public/uploads", imageToDelete);
+      if (imageToDelete !== "default.jpg" && fs.existsSync(imgPath)) {
+        fs.unlink(imgPath, () => {});
+      }
+
+      res.send("✅ Product deleted.");
+    });
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
+});
