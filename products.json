@@ -1,92 +1,434 @@
 [
   {
-    "stockCode": "3036011",
-    "name": "HOUSING FLYWHEEL",
-    "description": "NT SERIES | 14",
-    "category": "FLYWHEEL",
-    "extraNotes": "LAST 2 IN STOCK",
-    "quantity": 2,
-    "image": "3036011.jpg"
-  },
-  {
-    "stockCode": "3073707",
-    "name": "CRANKSHAFT",
-    "description": "M11",
-    "category": "CRANKSHAFT",
-    "extraNotes": "ON SPECIAL",
-    "quantity": 2,
-    "image": "3073707.jpg"
-  },
-  {
-    "stockCode": "3087856",
-    "name": "CAMSHAFT",
-    "description": "L10 | M11",
-    "category": "CAMSHAFT",
-    "extraNotes": "",
-    "quantity": 0,
-    "image": "3087856.jpg"
-  },
-  {
-    "stockCode": "3417717",
-    "name": "SLEEVE INJECTOR",
-    "description": "ISM | M11",
-    "category": "CYLINDER HEAD",
-    "extraNotes": "",
-    "quantity": 6,
-    "image": "3417717.jpeg"
-  },
-  {
-    "stockCode": "3803738",
-    "name": "CAMSHAFT",
-    "description": "N14",
-    "category": "CAMSHAFT",
-    "extraNotes": "LAST 1 IN STOCK",
-    "quantity": 1,
-    "image": "3803738.jpg"
-  },
-  {
-    "stockCode": "3027108",
-    "name": "BOLT CON ROD",
-    "description": "L10 | M11",
-    "category": "CONNECTING ROD AND PISTON",
-    "extraNotes": "PRICE ON ENQUIRY",
-    "quantity": 12,
-    "image": "3027108.jpeg"
-  },
-  {
-    "stockCode": "3005133",
-    "name": "ACCESSORY DRIVE",
+    "stockCode": "CUM3005133",
+    "name": "ACCESSORY DRIVE ASSEMBLY",
     "description": "BIG CAM",
     "category": "ACCESSORY DRIVE",
-    "extraNotes": "",
-    "quantity": 10,
+    "extraNotes": "AKMI",
+    "quantity": 1,
     "image": "3005133.jpg"
   },
   {
-    "stockCode": "3820566",
-    "name": "CAM BUSH",
-    "description": "L10 | M11",
-    "category": "CAMSHAFT",
-    "extraNotes": "SELL AS SET 7",
-    "quantity": 7,
-    "image": "3820566.jpg"
+    "stockCode": "CUM3078307-AKM",
+    "name": "ACCESSORY DRIVE ASSEMBLY",
+    "description": "N14C [ CAST IRON ]",
+    "category": "ACCESSORY DRIVE",
+    "extraNotes": "AKMI",
+    "quantity": 1,
+    "image": "3078307.jpg"
   },
   {
-    "stockCode": "4025339",
-    "name": "KIT PISTON",
+    "stockCode": "CUM0186918-GR",
+    "name": "ADAPTOR TURBO EXHAUST",
+    "description": "",
+    "category": "EXHAUST",
+    "extraNotes": "GRAND ROCK",
+    "quantity": 4,
+    "image": "0186918.jpg"
+  },
+  {
+    "stockCode": "CUM3069707",
+    "name": "BARREL + PLUNGER",
+    "description": "N14 STC",
+    "category": "INJECTOR",
+    "extraNotes": "INTERSTATE MCBEE",
+    "quantity": 10,
+    "image": "3069707.jpg"
+  },
+  {
+    "stockCode": "CUM0214952-02",
+    "name": "BEARING CON ROD [ .020 ]",
+    "description": "BIG CAM",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 12,
+    "image": "0214952.jpg"
+  },
+  {
+    "stockCode": "CUM0214953-01",
+    "name": "BEARING CON ROD [ .030 ]",
+    "description": "BIG CAM",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "AKMI",
+    "quantity": 18,
+    "image": "0214953.jpg"
+  },
+  {
+    "stockCode": "CUM0214952-01",
+    "name": "BEARING CON ROD [ .020 ]",
+    "description": "BIG CAM",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "AKMI",
+    "quantity": 2,
+    "image": "0214952.jpg"
+  },
+  {
+    "stockCode": "CUM3901172-05",
+    "name": "BEARING CON ROD [20 thou - 0.50mm ]",
     "description": "B-SERIES",
     "category": "CONNECTING ROD AND PISTON",
-    "extraNotes": "",
-    "quantity": 6,
-    "image": "4025339.jpg"
+    "extraNotes": "P.A.I.",
+    "quantity": 36,
+    "image": "3901172.jpg"
   },
   {
-    "stockCode": "3035026",
-    "name": "O RING INJECTOR SLEEVE",
-    "description": "ISM | M11",
-    "category": "CYLINDER HEAD",
-    "extraNotes": "",
+    "stockCode": "CUM3901174-01",
+    "name": "BEARING CON ROD [40 thou - 1.00mm ]",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "FP DIESEL",
+    "quantity": 6,
+    "image": "3901174.jpg"
+  },
+  {
+    "stockCode": "CUM4892796-FED",
+    "name": "BEARING CON ROD [ .020 ] [ LOWER ]",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "FP DIESEL",
     "quantity": 12,
-    "image": "3035026.jpeg"
+    "image": "4892796.jpg"
+  },
+  {
+    "stockCode": "CUM4932375-02",
+    "name": "BEARING CON ROD [10 thou - 0.25mm ]",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "FP DIESEL",
+    "quantity": 12,
+    "image": "4932375.jpg"
+  },
+  {
+    "stockCode": "CUM3939381-GB",
+    "name": "BEARING CON ROD [ 0.25mm ] [ .010 ] [ UPPER ]",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "GENUINE CUMMINS",
+    "quantity": 2,
+    "image": "3939381.jpg"
+  },
+  {
+    "stockCode": "CUM4892797-GB",
+    "name": "BEARING CON ROD [ .030 ] [ LOWER ]",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "GENUINE CUMMINS",
+    "quantity": 12,
+    "image": "4892797.jpg"
+  },
+  {
+    "stockCode": "CUM4893693-02",
+    "name": "BEARING CON ROD [ .STD ] [ LOWER ]",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "K M P",
+    "quantity": 12,
+    "image": "4893693.jpg"
+  },
+  {
+    "stockCode": "CUM3901170",
+    "name": "BEARING CON ROD .STD",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "K M P",
+    "quantity": 12,
+    "image": "3901170.jpg"
+  },
+  {
+    "stockCode": "CUM4893693-01",
+    "name": "BEARING CON ROD [ .STD ] [ LOWER ]",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "K M P",
+    "quantity": 6,
+    "image": "4893693.jpg"
+  },
+  {
+    "stockCode": "CUM3901432-PAI",
+    "name": "BEARING CON ROD [ .020 ]",
+    "description": "C-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 12,
+    "image": "3901432.jpg"
+  },
+  {
+    "stockCode": "CUM4089139-GB",
+    "name": "BEARING CON ROD [ .STD ] [ PAIR ]",
+    "description": "ISX",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "GENUINE CUMMINS",
+    "quantity": 6,
+    "image": "4089139.jpg"
+  },
+  {
+    "stockCode": "CUM3016761-PAI",
+    "name": "BEARING CON ROD [ .010 ]",
+    "description": "L10 | M11",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 12,
+    "image": "3016761-PAI.JPG"
+  },
+  {
+    "stockCode": "CUM3016762-PAI",
+    "name": "BEARING CON ROD [ .020 ]",
+    "description": "L10 | M11",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 12,
+    "image": "3016762.jpg"
+  },
+  {
+    "stockCode": "CUM3016763-PAI",
+    "name": "BEARING CON ROD [ .030 ]",
+    "description": "L10 | M11",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 12,
+    "image": "3016763.jpg"
+  },
+  {
+    "stockCode": "CUM3016760-J",
+    "name": "BEARING CON ROD [ .STD ]",
+    "description": "L10 | M11",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "K M P",
+    "quantity": 0,
+    "image": "3016760.jpg"
+  },
+  {
+    "stockCode": "CUM3055145-03",
+    "name": "BEARING CON ROD [ .STD ]",
+    "description": "N14",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 6,
+    "image": "3055145.jpg"
+  },
+  {
+    "stockCode": "CUM3055147-01",
+    "name": "BEARING CON ROD [ .020 ]",
+    "description": "N14",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "INTERSTATE MCBEE",
+    "quantity": 10,
+    "image": "3055147.jpg"
+  },
+  {
+    "stockCode": "CUM0203671-PAI",
+    "name": "BEARING CON ROD [ .010 ]",
+    "description": "NH220",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 12,
+    "image": "0203671-PAI.JPG"
+  },
+  {
+    "stockCode": "CUM0203670-MCB",
+    "name": "BEARING CON ROD [ .STD ]",
+    "description": "NH220",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "INTERSTATE MCBEE",
+    "quantity": 12,
+    "image": "0203670.jpg"
+  },
+  {
+    "stockCode": "CUM0203673-PAI",
+    "name": "BEARING CON ROD [ .030 ]",
+    "description": "NH220",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 12,
+    "image": "0203673.jpg"
+  },
+  {
+    "stockCode": "CUM0203670-FED",
+    "name": "BEARING CON ROD [ .STD ]",
+    "description": "NH220",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "FEDERAL MOGUL",
+    "quantity": 4,
+    "image": "0203670.jpg"
+  },
+  {
+    "stockCode": "CUM0203671-FED",
+    "name": "BEARING CON ROD [ .010 ]",
+    "description": "NH220",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "FP DIESEL",
+    "quantity": 8,
+    "image": "0203671-PAI.JPG"
+  },
+  {
+    "stockCode": "CUM3966244-FED",
+    "name": "BEARING CON ROD [ .STD ]",
+    "description": "QSL9 [ UPPER ]",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "FP DIESEL",
+    "quantity": 6,
+    "image": "3966244.jpg"
+  },
+  {
+    "stockCode": "CUM3966244-PAI",
+    "name": "BEARING CON ROD [ .STD ]",
+    "description": "QSL9 [ UPPER ]",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 12,
+    "image": "3966244.jpg"
+  },
+  {
+    "stockCode": "CUM0203663-02",
+    "name": "BEARING CON ROD [ .030 ]",
+    "description": "SMALL CAM",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "K M P",
+    "quantity": 12,
+    "image": "0203663.jpg"
+  },
+  {
+    "stockCode": "CUM0203663-01",
+    "name": "BEARING CON ROD [ .030 ]",
+    "description": "SMALL CAM",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "AKMI",
+    "quantity": 12,
+    "image": "0203663.jpg"
+  },
+  {
+    "stockCode": "CUM0203661-01",
+    "name": "BEARING CON ROD [ .010 ]",
+    "description": "SMALL CAM",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "FP DIESEL",
+    "quantity": 12,
+    "image": "0203661.JPG"
+  },
+  {
+    "stockCode": "CUM3046298",
+    "name": "BODY VALVE AIR COMPRESSOR",
+    "description": "None",
+    "category": "COMPRESSOR",
+    "extraNotes": "P.A.I.",
+    "quantity": 2,
+    "image": "3046298.jpg"
+  },
+  {
+    "stockCode": "CUM3067930",
+    "name": "BOLT | SPACER EXHAUST",
+    "description": "N14",
+    "category": "MANIFOLD",
+    "extraNotes": "P.A.I.",
+    "quantity": 48,
+    "image": "3067930.JPG"
+  },
+  {
+    "stockCode": "CUM3900919-FPD",
+    "name": "BOLT CON ROD",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "FP DIESEL",
+    "quantity": 62,
+    "image": "3900919.JPG"
+  },
+  {
+    "stockCode": "CUM3939409-GB",
+    "name": "BOLT CON ROD",
+    "description": "QSB",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "GENUINE CUMMINS",
+    "quantity": 28,
+    "image": "3939409.JPG"
+  },
+  {
+    "stockCode": "CUM4891179-01",
+    "name": "BOLT CON ROD",
+    "description": "B-SERIES [ FRACTURED ROD ]",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "BLK DIESEL",
+    "quantity": 1,
+    "image": "4891179.JPG"
+  },
+  {
+    "stockCode": "CUM4891179-04",
+    "name": "BOLT CON ROD",
+    "description": "B-SERIES [ FRACTURED ROD ]",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 3,
+    "image": "4891179.JPG"
+  },
+  {
+    "stockCode": "CUM3900919-PAI",
+    "name": "BOLT CON ROD",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 120,
+    "image": "3900919.JPG"
+  },
+  {
+    "stockCode": "CUM3027108",
+    "name": "BOLT CON ROD",
+    "description": "L10 M11",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 12,
+    "image": "3027108.JPG"
+  },
+  {
+    "stockCode": "CUM3906733-GB",
+    "name": "BOLT DAMPER FLYWHEEL",
+    "description": "C-SERIES",
+    "category": "FLYWHEEL",
+    "extraNotes": "GENUINE CUMMINS",
+    "quantity": 9,
+    "image": "3906733.JPG"
+  },
+  {
+    "stockCode": "CUM3930249-GB",
+    "name": "BOLT EXHAUST MANIFOLD",
+    "description": "[ B-SERIES ] [ KOMATSU ]",
+    "category": "MANIFOLD",
+    "extraNotes": "GENUINE CUMMINS",
+    "quantity": 24,
+    "image": "3930249.JPG"
+  },
+  {
+    "stockCode": "CUM3043647",
+    "name": "BOLT EXHAUST MANIFOLD",
+    "description": "BIG CAM | N14",
+    "category": "MANIFOLD",
+    "extraNotes": "P.A.I.",
+    "quantity": 50,
+    "image": "3043647.JPG"
+  },
+  {
+    "stockCode": "CUM3904217",
+    "name": "BOLT MAIN BEARING CAP",
+    "description": "B-SERIES",
+    "category": "CRANKSHAFT",
+    "extraNotes": "P.A.I.",
+    "quantity": 36,
+    "image": "3904217.JPG"
+  },
+  {
+    "stockCode": "CUM0132770",
+    "name": "BUSH ACCESSORY DRIVE",
+    "description": "BIG CAM",
+    "category": "ACCESSORY DRIVE",
+    "extraNotes": "K.M.P.",
+    "quantity": 1,
+    "image": "0132770.JPG"
+  },
+  {
+    "stockCode": "CUM0116391-L",
+    "name": "BUSH ACCESSORY DRIVE",
+    "description": "BIG CAM",
+    "category": "ACCESSORY DRIVE",
+    "extraNotes": "K.M.P.",
+    "quantity": 1,
+    "image": "0116391.JPG"
   }
 ]
