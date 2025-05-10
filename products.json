@@ -168,7 +168,7 @@
     "category": "CONNECTING ROD AND PISTON",
     "extraNotes": "P.A.I.",
     "quantity": 12,
-    "image": "3016761-PAI.JPG"
+    "image": "3016761-PAI.jpg"
   },
   {
     "stockCode": "CUM3016762-PAI",
@@ -222,7 +222,7 @@
     "category": "CONNECTING ROD AND PISTON",
     "extraNotes": "P.A.I.",
     "quantity": 12,
-    "image": "0203671-PAI.JPG"
+    "image": "0203671-PAI.jpg"
   },
   {
     "stockCode": "CUM0203670-MCB",
@@ -258,7 +258,7 @@
     "category": "CONNECTING ROD AND PISTON",
     "extraNotes": "FP DIESEL",
     "quantity": 8,
-    "image": "0203671-PAI.JPG"
+    "image": "0203671-PAI.jpg"
   },
   {
     "stockCode": "CUM3966244-FED",
@@ -303,7 +303,7 @@
     "category": "CONNECTING ROD AND PISTON",
     "extraNotes": "FP DIESEL",
     "quantity": 12,
-    "image": "0203661.JPG"
+    "image": "0203661.jpg"
   },
   {
     "stockCode": "CUM3046298",
@@ -321,7 +321,7 @@
     "category": "MANIFOLD",
     "extraNotes": "P.A.I.",
     "quantity": 48,
-    "image": "3067930.JPG"
+    "image": "3067930.jpg"
   },
   {
     "stockCode": "CUM3900919-FPD",
@@ -330,7 +330,7 @@
     "category": "CONNECTING ROD AND PISTON",
     "extraNotes": "FP DIESEL",
     "quantity": 62,
-    "image": "3900919.JPG"
+    "image": "3900919.jpg"
   },
   {
     "stockCode": "CUM3939409-GB",
@@ -339,7 +339,7 @@
     "category": "CONNECTING ROD AND PISTON",
     "extraNotes": "GENUINE CUMMINS",
     "quantity": 28,
-    "image": "3939409.JPG"
+    "image": "3939409.jpg"
   },
   {
     "stockCode": "CUM4891179-01",
@@ -348,7 +348,7 @@
     "category": "CONNECTING ROD AND PISTON",
     "extraNotes": "BLK DIESEL",
     "quantity": 1,
-    "image": "4891179.JPG"
+    "image": "4891179.jpg"
   },
   {
     "stockCode": "CUM4891179-04",
@@ -357,7 +357,7 @@
     "category": "CONNECTING ROD AND PISTON",
     "extraNotes": "P.A.I.",
     "quantity": 3,
-    "image": "4891179.JPG"
+    "image": "4891179.jpg"
   },
   {
     "stockCode": "CUM3900919-PAI",
@@ -366,7 +366,7 @@
     "category": "CONNECTING ROD AND PISTON",
     "extraNotes": "P.A.I.",
     "quantity": 120,
-    "image": "3900919.JPG"
+    "image": "3900919.jpg"
   },
   {
     "stockCode": "CUM3027108",
@@ -375,7 +375,7 @@
     "category": "CONNECTING ROD AND PISTON",
     "extraNotes": "P.A.I.",
     "quantity": 12,
-    "image": "3027108.JPG"
+    "image": "3027108.jpg"
   },
   {
     "stockCode": "CUM3906733-GB",
@@ -384,7 +384,7 @@
     "category": "FLYWHEEL",
     "extraNotes": "GENUINE CUMMINS",
     "quantity": 9,
-    "image": "3906733.JPG"
+    "image": "3906733.jpg"
   },
   {
     "stockCode": "CUM3930249-GB",
@@ -393,7 +393,7 @@
     "category": "MANIFOLD",
     "extraNotes": "GENUINE CUMMINS",
     "quantity": 24,
-    "image": "3930249.JPG"
+    "image": "3930249.jpg"
   },
   {
     "stockCode": "CUM3043647",
@@ -402,7 +402,7 @@
     "category": "MANIFOLD",
     "extraNotes": "P.A.I.",
     "quantity": 50,
-    "image": "3043647.JPG"
+    "image": "3043647.jpg"
   },
   {
     "stockCode": "CUM3904217",
@@ -411,7 +411,7 @@
     "category": "CRANKSHAFT",
     "extraNotes": "P.A.I.",
     "quantity": 36,
-    "image": "3904217.JPG"
+    "image": "3904217.jpg"
   },
   {
     "stockCode": "CUM0132770",
@@ -420,7 +420,7 @@
     "category": "ACCESSORY DRIVE",
     "extraNotes": "K.M.P.",
     "quantity": 1,
-    "image": "0132770.JPG"
+    "image": "0132770.jpg"
   },
   {
     "stockCode": "CUM0116391-L",
@@ -429,6 +429,159 @@
     "category": "ACCESSORY DRIVE",
     "extraNotes": "K.M.P.",
     "quantity": 1,
-    "image": "0116391.JPG"
+    "image": "0116391.jpg"
+  },
+  {
+    "stockCode": "CUM3680580-MCB",
+    "name": "BUSH CAM ISX (4)",
+    "description": "ISX",
+    "category": "CAMSHAFT",
+    "extraNotes": "INTERSTATE MCBEE",
+    "quantity": 4,
+    "image": "3680580.jpg"
+  },
+  {
+    "stockCode": "CUM3007689",
+    "name": "BUSH CAM THIN WALL",
+    "description": "BIG CAM 855",
+    "category": "CAMSHAFT",
+    "extraNotes": "FP DIESEL",
+    "quantity": 7,
+    "image": "3007689.jpg"
+  },
+  {
+    "stockCode": "CUM3801106-03",
+    "name": "BUSH CAMSHAFT",
+    "description": "BC | N14",
+    "category": "CAMSHAFT",
+    "extraNotes": "P.A.I.",
+    "quantity": 0,
+    "image": "3801106.jpg"
+  },
+  {
+    "stockCode": "CUM3940059-FED",
+    "name": "BUSH CAMSHAFT",
+    "description": "B-SERIES",
+    "category": "CAMSHAFT",
+    "extraNotes": "K M P",
+    "quantity": 3,
+    "image": "3940059.jpg"
+  },
+  {
+    "stockCode": "CUM3901306-FED",
+    "name": "BUSH CAMSHAFT",
+    "description": "B-SERIES",
+    "category": "CAMSHAFT",
+    "extraNotes": "FP DIESEL",
+    "quantity": 4,
+    "image": "3901306.jpg"
+  },
+  {
+    "stockCode": "CUM3901306-PAI",
+    "name": "BUSH CAMSHAFT",
+    "description": "B-SERIES",
+    "category": "CAMSHAFT",
+    "extraNotes": "P.A.I.",
+    "quantity": 8,
+    "image": "3901306.jpg"
+  },
+  {
+    "stockCode": "CUM3901306-MCB",
+    "name": "BUSH CAMSHAFT",
+    "description": "B-SERIES",
+    "category": "CAMSHAFT",
+    "extraNotes": "INTERSTATE MCBEE",
+    "quantity": 8,
+    "image": "3901306.jpg"
+  },
+  {
+    "stockCode": "CUM3901685",
+    "name": "BUSH CAMSHAFT",
+    "description": "C-SERIES",
+    "category": "CAMSHAFT",
+    "extraNotes": "K M P",
+    "quantity": 7,
+    "image": "3901685.jpg"
+  },
+  {
+    "stockCode": "CUM3820566",
+    "name": "BUSH CAMSHAFT [ SET OF 7 ]",
+    "description": "L10 | M11",
+    "category": "CAMSHAFT",
+    "extraNotes": "SOLD AS SET OF 7",
+    "quantity": 7,
+    "image": "3820566.jpg"
+  },
+  {
+    "stockCode": "CUM0147610",
+    "name": "BUSH COMPRESSOR HOUSING",
+    "description": "BIG CAM",
+    "category": "COMPRESSOR",
+    "extraNotes": "INTERSTATE MCBEE",
+    "quantity": 1,
+    "image": "0147610.jpg"
+  },
+  {
+    "stockCode": "CUM3901085-AKM",
+    "name": "BUSH CON ROD",
+    "description": "B-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "K M P",
+    "quantity": 6,
+    "image": "3901085.jpg"
+  },
+  {
+    "stockCode": "CUM3027105-J",
+    "name": "BUSH CON ROD",
+    "description": "L10",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 6,
+    "image": "3027105.jpg"
+  },
+  {
+    "stockCode": "CUM4059448-MCB",
+    "name": "BUSH CON ROD",
+    "description": "ISX",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "INTERSTATE MCBEE",
+    "quantity": 5,
+    "image": "4059448.jpg"
+  },
+  {
+    "stockCode": "CUM4059448-FED",
+    "name": "BUSH CON ROD",
+    "description": "ISX",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "FEDERAL MOGUL",
+    "quantity": 16,
+    "image": "4059448.jpg"
+  },
+  {
+    "stockCode": "CUM3043909",
+    "name": "BUSH CON ROD",
+    "description": "K-SERIES",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 6,
+    "image": "3043909.jpg"
+  },
+  {
+    "stockCode": "CUM3064295-PAI",
+    "name": "BUSH CON ROD",
+    "description": "N14",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 8,
+    "image": "3064295.jpg"
+  },
+  {
+    "stockCode": "CUM4944137-PAI",
+    "name": "BUSH CON ROD",
+    "description": "ISL | QSC | QSL",
+    "category": "CONNECTING ROD AND PISTON",
+    "extraNotes": "P.A.I.",
+    "quantity": 6,
+    "image": "4944137.jpg"
   }
 ]
